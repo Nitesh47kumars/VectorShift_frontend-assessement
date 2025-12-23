@@ -7,6 +7,8 @@ import { LLMNode } from './nodes/LLMNode';
 import { OutputNode } from './nodes/OutputNode';
 import { TextNode } from './nodes/TextNode.jsx';
 import NewNode from './nodes/NewNode.jsx';
+import {LoggerNode} from './nodes/LoggerNode.jsx';
+import {ConditionNode} from './nodes/ConditionNode.jsx';
 
 import 'reactflow/dist/style.css';
 
@@ -18,6 +20,8 @@ const nodeTypes = {
   customOutput: OutputNode,
   text: TextNode,
   newnode:NewNode,
+  logger: LoggerNode,
+  condition: ConditionNode,
 };
 
 const selector = (state) => ({
