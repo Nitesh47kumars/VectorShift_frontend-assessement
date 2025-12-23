@@ -9,7 +9,7 @@ import { TextNode } from './nodes/TextNode.jsx';
 
 import 'reactflow/dist/style.css';
 
-const gridSize = 20;
+const gridSize = 15;
 const proOptions = { hideAttribution: true };
 const nodeTypes = {
   customInput: InputNode,
@@ -86,7 +86,7 @@ export const PipelineUI = () => {
 
     return (
         <>
-        <div ref={reactFlowWrapper} style={{width: '100wv', height: '70vh'}}>
+        <div ref={reactFlowWrapper} style={{width: '100vw', height: '70vh'}}>
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
@@ -101,7 +101,7 @@ export const PipelineUI = () => {
                 snapGrid={[gridSize, gridSize]}
                 connectionLineType='smoothstep'
             >
-                <Background color="#aaa" gap={gridSize} />
+                <Background color="#999" gap={gridSize} />
                 <Controls />
                 <MiniMap />
             </ReactFlow>

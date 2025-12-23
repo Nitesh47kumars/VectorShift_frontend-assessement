@@ -1,35 +1,28 @@
-// textNode.js
-
+// src/nodes/TextNode.jsx
 import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import BaseNode from './BaseNode.jsx';
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || '{{input}}');
 
-  const handleTextChange = (e) => {
-    setCurrText(e.target.value);
-  };
+  // detect variables like {{var}}
+  const variables = currText.match(/\{\{(.*?)\}\}/g) || [];
+  const handles = variables.map((v) => ({ id: v.replace(/[{}]/g, '') }));
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <div>
-        <span>Text</span>
-      </div>
-      <div>
-        <label>
-          Text:
-          <input 
-            type="text" 
-            value={currText} 
-            onChange={handleTextChange} 
-          />
-        </label>
-      </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-output`}
+    <BaseNode
+      id={id}
+      label="Text"
+      inputs={handles}
+      outputs={[{ id: `${id}-output` }]}
+      height={Math.max(100, currText.length * 0.7)}
+    >
+      <textarea
+        className="w-full mt-1 p-2 border rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none text-sm"
+        value={currText}
+        onChange={(e) => setCurrText(e.target.value)}
+        rows={3}
       />
-    </div>
+    </BaseNode>
   );
-}
+};

@@ -1,47 +1,39 @@
-// outputNode.js
-
+// src/nodes/OutputNode.jsx
 import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import BaseNode from './BaseNode.jsx';
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
-  const [outputType, setOutputType] = useState(data.outputType || 'Text');
-
-  const handleNameChange = (e) => {
-    setCurrName(e.target.value);
-  };
-
-  const handleTypeChange = (e) => {
-    setOutputType(e.target.value);
-  };
+  const [outputType, setOutputType] = useState(data?.outputType || 'Text');
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-value`}
-      />
-      <div>
-        <span>Output</span>
-      </div>
-      <div>
-        <label>
+    <BaseNode
+      id={id}
+      label="Output"
+      inputs={[{ id: `${id}-value` }]}
+    >
+      <div className="flex flex-col gap-2 mt-1">
+        <label className="flex flex-col text-sm font-medium text-gray-700">
           Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
+          <input
+            className="mt-1 px-2 py-1 border rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            value={currName}
+            onChange={(e) => setCurrName(e.target.value)}
           />
         </label>
-        <label>
+
+        <label className="flex flex-col text-sm font-medium text-gray-700">
           Type:
-          <select value={outputType} onChange={handleTypeChange}>
+          <select
+            className="mt-1 px-2 py-1 border rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+            value={outputType}
+            onChange={(e) => setOutputType(e.target.value)}
+          >
             <option value="Text">Text</option>
             <option value="File">Image</option>
           </select>
         </label>
       </div>
-    </div>
+    </BaseNode>
   );
-}
+};
