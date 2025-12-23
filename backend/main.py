@@ -1,10 +1,23 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict
 from collections import defaultdict, deque
 
 app = FastAPI()
 
+# ---------- Enable CORS ----------
+origins = [
+    "http://localhost:5173",  # your frontend origin
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ---------- Data Models ----------
 class Node(BaseModel):
@@ -12,16 +25,13 @@ class Node(BaseModel):
     type: str
     data: Dict | None = None
 
-
 class Edge(BaseModel):
     source: str
     target: str
 
-
 class Pipeline(BaseModel):
     nodes: List[Node]
     edges: List[Edge]
-
 
 # ---------- Helpers ----------
 def is_dag(nodes: List[Node], edges: List[Edge]) -> bool:
@@ -45,12 +55,10 @@ def is_dag(nodes: List[Node], edges: List[Edge]) -> bool:
 
     return visited == len(nodes)
 
-
 # ---------- Routes ----------
 @app.get("/")
 def read_root():
     return {"Ping": "Pong"}
-
 
 @app.post("/pipelines/parse")
 def parse_pipeline(pipeline: Pipeline):

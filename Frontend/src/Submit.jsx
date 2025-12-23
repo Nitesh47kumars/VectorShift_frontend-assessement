@@ -4,49 +4,31 @@ export const SubmitButton = () => {
   const { nodes, edges } = useStore();
 
   const handleSubmit = async () => {
-    const values = {};
+    try {
+      // Send pipeline data to backend
+      const response = await fetch('http://localhost:8000/pipelines/parse', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nodes, edges }),
+      });
 
-    // 1. Collect Input values
-    nodes.forEach((node) => {
-      if (node.type === 'customInput') {
-        values[node.id] = node.data.inputValue;
-      }
-    });
+      const data = await response.json();
 
-    // 2. Execute Text nodes
-    nodes.forEach((node) => {
-      if (node.type === 'text') {
-        let output = node.data.text;
-
-        // find incoming edge
-        edges.forEach((edge) => {
-          if (edge.target === node.id) {
-            const sourceValue = values[edge.source];
-            output = output.replace(/\{\{\s*\w+\s*\}\}/g, sourceValue);
-          }
-        });
-
-        values[node.id] = output;
-      }
-    });
-
-    // 3. Execute Output nodes
-    nodes.forEach((node) => {
-      if (node.type === 'customOutput') {
-        edges.forEach((edge) => {
-          if (edge.target === node.id) {
-            values[node.id] = values[edge.source];
-          }
-        });
-      }
-    });
-
-    console.log('Pipeline Execution Result:', values);
-    alert(JSON.stringify(values, null, 2));
+      // Show alert with result
+      alert(
+        `Pipeline Execution Result:\n` +
+        `Nodes: ${data.num_nodes}\n` +
+        `Edges: ${data.num_edges}\n` +
+        `Is DAG: ${data.is_dag}`
+      );
+    } catch (err) {
+      console.error('Error submitting pipeline:', err);
+      alert('Failed to submit pipeline. Check console for details.');
+    }
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
       <button onClick={handleSubmit}>Submit</button>
     </div>
   );
