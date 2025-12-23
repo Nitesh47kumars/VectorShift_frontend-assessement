@@ -1,4 +1,4 @@
-import { useStore } from './Store';
+import { useStore } from "./Store";
 
 export const SubmitButton = () => {
   const { nodes, edges } = useStore();
@@ -6,9 +6,9 @@ export const SubmitButton = () => {
   const handleSubmit = async () => {
     try {
       // Send pipeline data to backend
-      const response = await fetch('http://localhost:8000/pipelines/parse', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("http://localhost:8000/pipelines/parse", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nodes, edges }),
       });
 
@@ -17,19 +17,19 @@ export const SubmitButton = () => {
       // Show alert with result
       alert(
         `Pipeline Execution Result:\n` +
-        `Nodes: ${data.num_nodes}\n` +
-        `Edges: ${data.num_edges}\n` +
-        `Is DAG: ${data.is_dag}`
+          `Nodes: ${data.num_nodes}\n` +
+          `Edges: ${data.num_edges}\n` +
+          `Is DAG: ${data.is_dag}`
       );
     } catch (err) {
-      console.error('Error submitting pipeline:', err);
-      alert('Failed to submit pipeline. Check console for details.');
+      console.error("Error submitting pipeline:", err);
+      alert("Failed to submit pipeline. Check console for details.");
     }
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
-      <button onClick={handleSubmit}>Submit</button>
+    <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
+      <button className="bg-blue-500 px-8 py-3 rounded text-white font-bold" onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

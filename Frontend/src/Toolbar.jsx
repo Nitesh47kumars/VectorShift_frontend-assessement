@@ -5,12 +5,12 @@ import { DraggableNode } from './draggableNode.jsx';
 export const PipelineToolbar = () => {
     const nodes = [
         { type: 'customInput', label: 'Input' },
+        { type: 'customOutput', label: 'Output' },
         { type: 'llm', label: 'LLM' },
         { type: 'text', label: 'Text' },
         { type: 'newnode', label: 'New' },
         { type: 'condition', label: 'Condition' },
         { type: 'logger', label: 'Logger' },
-        { type: 'customOutput', label: 'Output' },
     ];
 
     return (
