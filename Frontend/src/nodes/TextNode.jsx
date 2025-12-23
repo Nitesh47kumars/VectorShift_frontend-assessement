@@ -5,7 +5,7 @@ import BaseNode from './BaseNode.jsx';
 const VARIABLE_REGEX = /\{\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\}\}/g;
 
 export const TextNode = ({ id, data }) => {
-  const [text, setText] = useState(data?.text || '{{input}}');
+  const [text, setText] = useState(data?.text || '{{value}}');
   const textareaRef = useRef(null);
 
   // Auto-resize textarea height
@@ -35,12 +35,15 @@ export const TextNode = ({ id, data }) => {
       id={id}
       label="Text"
       inputs={inputHandles}
-      outputs={[{ id: `${id}-output` }]}
+      outputs={[{ id: `${id}-value` }]}
     >
       <textarea
         ref={textareaRef}
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          setText(e.target.value);
+          data.text = e.target.value;
+        }}
         placeholder="Type text… use {{variable}}"
         className="
           w-full
