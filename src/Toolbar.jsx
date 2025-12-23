@@ -3,14 +3,33 @@
 import { DraggableNode } from './draggableNode.jsx';
 
 export const PipelineToolbar = () => {
+    const nodes = [
+        { type: 'customInput', label: 'Input' },
+        { type: 'llm', label: 'LLM' },
+        { type: 'customOutput', label: 'Output' },
+        { type: 'text', label: 'Text' },
+        { type: 'newnode', label: 'New' },
+    ];
 
     return (
-        <div style={{ padding: '10px' }}>
-            <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                <DraggableNode type='customInput' label='Input' />
-                <DraggableNode type='llm' label='LLM' />
-                <DraggableNode type='customOutput' label='Output' />
-                <DraggableNode type='text' label='Text' />
+        <div className="w-full h-full p-4 box-border shadow-lg">
+            <div className="grid w-full h-full grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-4">
+                {nodes.map((node) => (
+                    <div
+                        key={node.type}
+                        className="
+                            transition-all duration-200 ease-in-out
+                            hover:bg-gray-100
+                            hover:-translate-y-1
+                            hover:shadow-lg
+                        "
+                    >
+                        <DraggableNode
+                            type={node.type}
+                            label={node.label}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );
