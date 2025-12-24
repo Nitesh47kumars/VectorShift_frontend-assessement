@@ -50,15 +50,16 @@ export const TextNode = ({ id, data }) => {
           min-h-20
           resize-none
           rounded-md
-          border
-          border-gray-300
+          border border-gray-600
+          bg-transparent
           p-2
           text-sm
           leading-relaxed
-          text-gray-800
+          text-white
+          placeholder:text-gray-400
+          outline-none
           focus:outline-none
-          focus:ring-2
-          focus:ring-indigo-500
+          focus:ring-0
         "
       />
     </BaseNode>

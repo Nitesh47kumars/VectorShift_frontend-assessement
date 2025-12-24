@@ -24,23 +24,44 @@ export const ConditionNode = CreateNode({
       <div className="flex flex-col gap-2">
         {/* Condition selector */}
         <select
-          className="border rounded px-2 py-1 text-sm bg-white"
+          className="
+            border border-gray-600
+            rounded-md
+            px-2 py-1
+            text-sm
+            bg-transparent
+            text-white
+            outline-none
+            focus:outline-none
+            focus:ring-0
+          "
           value={conditionType}
           onChange={(e) => setConditionType(e.target.value)}
         >
-          <option>Equals</option>
-          <option>Greater Than</option>
-          <option>Less Than</option>
+          <option className="bg-[#0b1220]">Equals</option>
+          <option className="bg-[#0b1220]">Greater Than</option>
+          <option className="bg-[#0b1220]">Less Than</option>
         </select>
 
-        {/* Compare value */}
         <input
           type="text"
           placeholder="Compare value"
-          className="border rounded px-2 py-1 text-sm"
+          className="
+            border border-gray-600
+            rounded-md
+            px-2 py-1
+            text-sm
+            bg-transparent
+            text-white
+            placeholder:text-gray-400
+            outline-none
+            focus:outline-none
+            focus:ring-0
+          "
           value={compareValue}
           onChange={(e) => setCompareValue(e.target.value)}
         />
+
       </div>
     );
   },

@@ -22,27 +22,32 @@ const NewNode = ({ id, data }) => {
       outputs={outputs}
     >
       <div className="flex flex-col gap-1">
-        <label className="text-xs font-medium text-gray-500">
-          User Instruction
-        </label>
+        
+      <label className="text-xs font-medium text-white/70">
+        User Instruction
+      </label>
 
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Write instruction here..."
-          className="
-            w-full
-            min-h-18
-            resize-none
-            rounded-md
-            border border-gray-300
-            px-2 py-1
-            text-sm
-            focus:outline-none
-            focus:ring-2
-            focus:ring-blue-500
-          "
-        />
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Write instruction here..."
+        className="
+          w-full
+          min-h-18
+          resize-none
+          rounded-md
+          border border-gray-600
+          bg-transparent
+          px-2 py-1
+          text-sm
+          text-white
+          placeholder:text-gray-400
+          outline-none
+          focus:outline-none
+          focus:ring-0
+        "
+      />
+
       </div>
     </BaseNode>
   );

@@ -64,7 +64,7 @@ const BaseNode = ({
       </div>
 
       {/* Title */}
-      <div className="font-semibold text-white border-b border-white/10 pb-1">
+      <div className="font-semibold uppercase text-md text-white border-b border-white/10 pb-1">
         {label}
       </div>
 

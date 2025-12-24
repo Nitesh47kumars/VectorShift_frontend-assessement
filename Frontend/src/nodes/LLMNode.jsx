@@ -12,7 +12,7 @@ export const LLMNode = ({ id, data }) => {
       ]}
       outputs={[{ id: `${id}-response` }]}
     >
-      <div className="text-sm text-gray-700 mt-1">
+      <div className="text-sm text-white/70 mt-1">
         LLM Node: process input and generate output
       </div>
     </BaseNode>

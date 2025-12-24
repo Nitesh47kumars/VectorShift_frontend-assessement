@@ -13,26 +13,45 @@ export const OutputNode = ({ id, data }) => {
       inputs={[{ id: `${id}-value` }]}
     >
       <div className="flex flex-col gap-2 mt-1">
-        <label className="flex flex-col text-sm font-medium text-gray-700">
-          Name:
-          <input
-            className="mt-1 px-2 py-1 border rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-            value={currName}
-            onChange={(e) => setCurrName(e.target.value)}
-          />
-        </label>
+      <label className="flex flex-col text-sm font-medium text-white/80">
+        Name:
+        <input
+          className="
+            mt-1 px-2 py-1
+            rounded-md
+            border border-gray-600
+            bg-transparent
+            text-white
+            outline-none
+            focus:outline-none
+            focus:ring-0
+          "
+          value={currName}
+          onChange={(e) => setCurrName(e.target.value)}
+        />
+      </label>
 
-        <label className="flex flex-col text-sm font-medium text-gray-700">
-          Type:
-          <select
-            className="mt-1 px-2 py-1 border rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
-            value={outputType}
-            onChange={(e) => setOutputType(e.target.value)}
-          >
-            <option value="Text">Text</option>
-            <option value="File">Image</option>
-          </select>
-        </label>
+      <label className="flex flex-col text-sm font-medium text-white/80">
+        Type:
+        <select
+          className="
+            mt-1 px-2 py-1
+            rounded-md
+            border border-gray-600
+            bg-transparent
+            text-white
+            outline-none
+            focus:outline-none
+            focus:ring-0
+          "
+          value={outputType}
+          onChange={(e) => setOutputType(e.target.value)}
+        >
+          <option className="bg-[#0b1220]" value="Text">Text</option>
+          <option className="bg-[#0b1220]" value="File">Image</option>
+        </select>
+      </label>
+
       </div>
     </BaseNode>
   );
