@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useStore } from "./Store";
+import { useStore } from "../store/Store";
 
 export const SubmitButton = () => {
   const { nodes, edges } = useStore();

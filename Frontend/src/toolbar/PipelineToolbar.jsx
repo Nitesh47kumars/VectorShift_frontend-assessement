@@ -1,7 +1,7 @@
-// toolbar.js
+import { DraggableNode } from "./draggableNode.jsx";
+
 import { GiLogicGateNor } from "react-icons/gi";
 import { MdInput } from "react-icons/md";
-import { DraggableNode } from "./draggableNode.jsx";
 import { CiTextAlignCenter } from "react-icons/ci";
 import { TfiWrite } from "react-icons/tfi";
 import { FaRobot } from "react-icons/fa";

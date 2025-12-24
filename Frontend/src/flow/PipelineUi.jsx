@@ -1,20 +1,20 @@
 import { useState, useRef, useCallback } from 'react';
 import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
-import { useStore } from './Store.jsx';
+import { useStore } from '../store/Store.jsx';
 import { shallow } from 'zustand/shallow';
-import { InputNode } from './nodes/InputNode.jsx';
-import { LLMNode } from './nodes/LLMNode.jsx';
-import { OutputNode } from './nodes/OutputNode.jsx';
-import { TextNode } from './nodes/TextNode.jsx';
-import NewNode from './nodes/NewNode.jsx';
-import {LoggerNode} from './nodes/LoggerNode.jsx';
-import {ConditionNode} from './nodes/ConditionNode.jsx';
+import { InputNode } from '../nodes/InputNode.jsx';
+import { LLMNode } from '../nodes/LLMNode.jsx';
+import { OutputNode } from '../nodes/OutputNode.jsx';
+import { TextNode } from '../nodes/TextNode.jsx';
+import NewNode from '../nodes/NewNode.jsx';
+import {LoggerNode} from '../nodes/LoggerNode.jsx';
+import {ConditionNode} from '../nodes/ConditionNode.jsx';
 
 import 'reactflow/dist/style.css';
-import { SubmitButton } from './Submit.jsx';
+import { SubmitButton } from '../ui/Submit.jsx';
 
 
-import DeletableEdge from './DeletableEdge';
+import DeletableEdge from './DeletableEdge.jsx';
 
 const gridSize = 15;
 const proOptions = { hideAttribution: true };

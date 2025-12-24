@@ -1,6 +1,5 @@
 import { getBezierPath, EdgeLabelRenderer } from 'reactflow';
-import { useStore } from './Store';
-import { RxCross2 } from "react-icons/rx";
+import { useStore } from '../store/Store';
 
 export default function DeletableEdge({
   id,
