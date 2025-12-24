@@ -29,3 +29,26 @@ code {
 .animate-scale-in {
   animation: scale-in 0.2s ease-out;
 }
+
+
+        /* Controls */
+
+.react-flow__controls {
+  background: #333;
+  border-radius: 5px;
+  padding: 3px 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.react-flow__controls-button {
+  color: #FFF !important;
+  border: none !important;
+  width: 36px;
+  height: 36px;
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+.react-flow__controls-button:hover {
+  background: #a3a3a3 !important; /* dark gray */
+}

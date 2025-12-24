@@ -112,9 +112,33 @@ export const PipelineUI = () => {
             <Background color="#999" gap={gridSize} />
 
             <Controls position="bottom-left"/>
-            <MiniMap position="bottom-left" style={{left: '50px'}}/>
 
-            <div className="absolute bottom-4 right-4">
+            <MiniMap 
+              position="bottom-left" 
+              style={{
+                left: 60,
+                height: 130,
+                width: 260,
+                borderRadius: '4px',
+                backgroundColor: '#333',
+                border: '1px solid #555',
+              }}
+              nodeColor={(n) => {
+                switch(n.type){
+                  case 'customInput': return '#10B981';    // green
+                  case 'customOutput': return '#F00';    // red
+                  case 'llm': return '#630000';            // Brown
+                  case 'text': return '#FBBF24';           // yellow
+                  case 'newnode': return '#8B5CF6';        // purple
+                  case 'logger': return '#14B8F6';         // skyblue
+                  case 'condition': return '#F97316';      // orange
+                  default: return '#9CA3AF';               // gray fallback
+                }
+              }}
+              maskColor="rgba(0,0,0,0.2)"
+            />
+
+            <div className="absolute z-10 bottom-4 right-4">
               <SubmitButton />
             </div>
           </ReactFlow>
