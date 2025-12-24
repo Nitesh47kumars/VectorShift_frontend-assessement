@@ -22,7 +22,7 @@ export const DraggableNode = ({ type, label, icon }) => {
         justify-center
         gap-1.5
         rounded-xl
-        bg-linear-to-br from-slate-800 to-slate-900
+        bg-linear-to-r from-slate-800 to-slate-900
         text-white
         shadow-lg
         transition-all

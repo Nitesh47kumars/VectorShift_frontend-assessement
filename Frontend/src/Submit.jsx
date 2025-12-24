@@ -28,8 +28,25 @@ export const SubmitButton = () => {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
-      <button className="bg-blue-500 px-8 py-3 rounded text-white font-bold" onClick={handleSubmit}>Submit</button>
-    </div>
+    <div className="flex justify-center mt-4">
+  <button
+    onClick={handleSubmit}
+    className="
+      px-10 py-3
+      rounded-xl
+      font-semibold
+      text-white
+      bg-linear-to-r from-blue-700 via-blue-500 to-blue-700
+      shadow-lg
+      transition-all duration-200
+      hover:brightness-110 hover:shadow-xl
+      active:scale-95
+      focus:outline-none focus:ring-4 focus:ring-blue-300
+    "
+  >
+    Submit
+  </button>
+</div>
+
   );
 };
