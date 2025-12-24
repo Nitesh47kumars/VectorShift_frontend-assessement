@@ -1,16 +1,22 @@
 // toolbar.js
-
+import { GiLogicGateNor } from "react-icons/gi";
+import { MdInput } from "react-icons/md";
 import { DraggableNode } from './draggableNode.jsx';
+import { CiTextAlignCenter } from "react-icons/ci";
+import { TfiWrite } from "react-icons/tfi";
+import { FaRobot } from "react-icons/fa";
+import { IoIosPrint } from "react-icons/io";
+import { LuFileOutput } from "react-icons/lu";
 
 export const PipelineToolbar = () => {
     const nodes = [
-        { type: 'customInput', label: 'Input' },
-        { type: 'customOutput', label: 'Output' },
-        { type: 'llm', label: 'LLM' },
-        { type: 'text', label: 'Text' },
-        { type: 'newnode', label: 'New' },
-        { type: 'condition', label: 'Condition' },
-        { type: 'logger', label: 'Logger' },
+        { type: 'customInput', label: 'Input',icon:<MdInput /> },
+        { type: 'customOutput', label: 'Output', icon: <LuFileOutput /> },
+        { type: 'llm', label: 'LLM',icon: <FaRobot /> },
+        { type: 'text', label: 'Text',icon:<CiTextAlignCenter /> },
+        { type: 'newnode', label: 'New',icon:<TfiWrite /> },
+        { type: 'condition', label: 'Condition',icon: <GiLogicGateNor /> },
+        { type: 'logger', label: 'Logger',icon:<IoIosPrint /> },
     ];
 
     return (
@@ -29,6 +35,7 @@ export const PipelineToolbar = () => {
                         <DraggableNode
                             type={node.type}
                             label={node.label}
+                            icon={node.icon}
                         />
                     </div>
                 ))}
