@@ -52,23 +52,3 @@ code {
 .react-flow__controls-button:hover {
   background: #a3a3a3 !important; /* dark gray */
 }
-
-
-
-
-          /* Deletable Button */
-.edge-delete-btn {
-  opacity: 0.7;
-  color: rgb(200, 0, 0);
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s;
-}
-
-
-.edge-delete-btn:hover {
-  opacity: 1;
-  color: red;
-  text-shadow: 0.1px 0.1px 2px #777;
-}

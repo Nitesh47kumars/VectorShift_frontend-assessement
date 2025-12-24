@@ -1,5 +1,5 @@
-import { getBezierPath, EdgeLabelRenderer } from 'reactflow';
-import { useStore } from '../store/Store';
+import { getBezierPath, EdgeLabelRenderer } from "reactflow";
+import { useStore } from "../store/Store";
 
 export default function DeletableEdge({
   id,
@@ -24,7 +24,7 @@ export default function DeletableEdge({
   });
 
   const deleteEdge = () => {
-    onEdgesChange([{ type: 'remove', id }]);
+    onEdgesChange([{ type: "remove", id }]);
   };
 
   return (
@@ -40,15 +40,20 @@ export default function DeletableEdge({
       <EdgeLabelRenderer>
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)`,
-            pointerEvents: 'all',
+            pointerEvents: "all",
           }}
           className="edge-delete-wrapper"
         >
           <button
             onClick={deleteEdge}
-            className="edge-delete-btn"
+            className="
+              text-red-600 font-bold text-sm
+              opacity-70 hover:opacity-100
+              transition
+              hover:drop-shadow-[0_0_2px_rgba(255,0,0,0.6)]
+            "
           >
             X
           </button>

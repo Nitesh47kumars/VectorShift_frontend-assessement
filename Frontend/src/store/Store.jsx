@@ -128,7 +128,14 @@ export const useStore = create((set, get) => ({
                     output = null;
             }
 
-            node.data = { ...node.data, value: output };
+            set({
+                nodes: get().nodes.map(n =>
+                  n.id === node.id
+                    ? { ...n, data: { ...n.data, value: output } }
+                    : n
+                )
+            });
+              
             results[node.id] = output;
 
             executed.add(node.id);
