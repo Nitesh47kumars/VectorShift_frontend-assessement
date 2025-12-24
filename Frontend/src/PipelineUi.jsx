@@ -2,18 +2,20 @@ import { useState, useRef, useCallback } from 'react';
 import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
 import { useStore } from './Store.jsx';
 import { shallow } from 'zustand/shallow';
-import { InputNode } from './nodes/InputNode';
-import { LLMNode } from './nodes/LLMNode';
-import { OutputNode } from './nodes/OutputNode';
+import { InputNode } from './nodes/InputNode.jsx';
+import { LLMNode } from './nodes/LLMNode.jsx';
+import { OutputNode } from './nodes/OutputNode.jsx';
 import { TextNode } from './nodes/TextNode.jsx';
 import NewNode from './nodes/NewNode.jsx';
 import {LoggerNode} from './nodes/LoggerNode.jsx';
 import {ConditionNode} from './nodes/ConditionNode.jsx';
 
 import 'reactflow/dist/style.css';
+import { SubmitButton } from './Submit.jsx';
 
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
+
 const nodeTypes = {
   customInput: InputNode,
   llm: LLMNode,
@@ -61,7 +63,6 @@ export const PipelineUI = () => {
             const appData = JSON.parse(event.dataTransfer.getData('application/reactflow'));
             const type = appData?.nodeType;
       
-            // check if the dropped element is valid
             if (typeof type === 'undefined' || !type) {
               return;
             }
@@ -92,25 +93,32 @@ export const PipelineUI = () => {
 
     return (
         <>
-        <div ref={reactFlowWrapper} style={{width: '100vw', height: '70vh'}}>
-            <ReactFlow
-                nodes={nodes}
-                edges={edges}
-                onNodesChange={onNodesChange}
-                onEdgesChange={onEdgesChange}
-                onConnect={onConnect}
-                onDrop={onDrop}
-                onDragOver={onDragOver}
-                onInit={setReactFlowInstance}
-                nodeTypes={nodeTypes}
-                proOptions={proOptions}
-                snapGrid={[gridSize, gridSize]}
-                connectionLineType='smoothstep'
-            >
-                <Background color="#999" gap={gridSize} />
-                <Controls />
-                <MiniMap />
-            </ReactFlow>
+        <div ref={reactFlowWrapper} style={{width: '100vw', height: '84.5vh', backgroundColor:"#111"}}>
+          <ReactFlow
+            className="w-full h-full"
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            onInit={setReactFlowInstance}
+            nodeTypes={nodeTypes}
+            proOptions={proOptions}
+            snapGrid={[gridSize, gridSize]}
+            connectionLineType="smoothstep"
+          >
+            <Background color="#999" gap={gridSize} />
+
+            <Controls position="bottom-left"/>
+            <MiniMap position="bottom-left" style={{left: '50px'}}/>
+
+            <div className="absolute bottom-4 right-4">
+              <SubmitButton />
+            </div>
+          </ReactFlow>
+
         </div>
         </>
     )

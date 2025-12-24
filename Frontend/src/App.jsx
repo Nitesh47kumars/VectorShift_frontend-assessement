@@ -1,5 +1,5 @@
 import { PipelineToolbar } from './Toolbar.jsx';
-import { PipelineUI } from './Ui.jsx';
+import { PipelineUI } from './PipelineUi.jsx';
 import { SubmitButton } from './Submit.jsx';
 
 function App() {
@@ -7,7 +7,6 @@ function App() {
     <div>
       <PipelineToolbar />
       <PipelineUI />
-      <SubmitButton />
     </div>
   );
 }
