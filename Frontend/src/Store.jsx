@@ -44,7 +44,7 @@ export const useStore = create((set, get) => ({
     onConnect: (connection) => set({
         edges: addEdge({
             ...connection,
-            type: 'smoothstep',
+            type: 'deletable',
             animated: true,
             markerEnd: { type: MarkerType.Arrow, height: 20, width: 20 }
         }, get().edges)

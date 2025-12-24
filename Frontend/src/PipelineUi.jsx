@@ -13,6 +13,9 @@ import {ConditionNode} from './nodes/ConditionNode.jsx';
 import 'reactflow/dist/style.css';
 import { SubmitButton } from './Submit.jsx';
 
+
+import DeletableEdge from './DeletableEdge';
+
 const gridSize = 15;
 const proOptions = { hideAttribution: true };
 
@@ -91,6 +94,12 @@ export const PipelineUI = () => {
         event.dataTransfer.dropEffect = 'move';
     }, []);
 
+
+    const edgeTypes = {
+      deletable: DeletableEdge,
+    };
+
+
     return (
         <>
         <div ref={reactFlowWrapper} style={{width: '100vw', height: '84.5vh', backgroundColor:"#111"}}>
@@ -98,6 +107,7 @@ export const PipelineUI = () => {
             className="w-full h-full"
             nodes={nodes}
             edges={edges}
+            edgeTypes={edgeTypes}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
@@ -107,7 +117,6 @@ export const PipelineUI = () => {
             nodeTypes={nodeTypes}
             proOptions={proOptions}
             snapGrid={[gridSize, gridSize]}
-            connectionLineType="smoothstep"
           >
             <Background color="#999" gap={gridSize} />
 
@@ -116,7 +125,7 @@ export const PipelineUI = () => {
             <MiniMap 
               position="bottom-left" 
               style={{
-                left: 60,
+                left: 50,
                 height: 130,
                 width: 260,
                 borderRadius: '4px',
