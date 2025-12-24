@@ -1,4 +1,3 @@
-// src/nodes/InputNode.jsx
 import { useState } from 'react';
 import BaseNode from './BaseNode.jsx';
 
@@ -23,10 +22,10 @@ export const InputNode = ({ id, data }) => {
       <div className="flex flex-col gap-2 mt-2">
 
         {/* Name */}
-        <label className="flex flex-col text-sm font-medium text-gray-700">
+        <label className="flex flex-col text-sm font-medium">
           Name:
           <input
-            className="mt-1 px-2 py-1 border border-gray-300 rounded-md"
+            className="mt-1 px-2 py-1 border border-gray-500 rounded-md outline-none"
             value={currName}
             onChange={(e) => {
               setCurrName(e.target.value);
@@ -37,10 +36,10 @@ export const InputNode = ({ id, data }) => {
         </label>
 
         {/* Type */}
-        <label className="flex flex-col text-sm font-medium text-gray-700">
+        <label className="flex flex-col text-sm font-medium text-white">
           Type:
           <select
-            className="mt-1 px-2 py-1 border border-gray-300 rounded-md bg-white"
+            className="mt-1 px-2 py-1 border border-gray-500 rounded-md bg-transparent outline-none"
             value={inputType}
             onChange={(e) => {
               setInputType(e.target.value);
@@ -53,10 +52,10 @@ export const InputNode = ({ id, data }) => {
         </label>
 
         {/* Value */}
-        <label className="flex flex-col text-sm font-medium text-gray-700">
+        <label className="flex flex-col text-sm font-medium text-white">
           Value:
           <input
-            className="mt-1 px-2 py-1 border border-gray-300 rounded-md"
+            className="mt-1 px-2 py-1 border border-gray-500 rounded-md outline-none"
             value={inputValue}
             onChange={(e) => {
               setInputValue(e.target.value);

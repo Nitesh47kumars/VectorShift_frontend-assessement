@@ -19,42 +19,59 @@ const BaseNode = ({
 
   return (
     <div
-      className="relative bg-white border border-gray-300 rounded-lg shadow-md hover:shadow-lg transition-shadow p-3 flex flex-col gap-2"
+      className="
+        relative
+        rounded-lg
+        border border-white/10
+        bg-[#0a2254]
+        shadow-[0_8px_24px_rgba(0,0,0,0.6)]
+        hover:shadow-[0_12px_32px_rgba(0,0,0,0.8)]
+        transition-shadow
+        p-3
+        flex flex-col gap-2
+        text-white
+        focus:outline-none
+        focus:ring-0
+      "
       style={{ width }}
+      tabIndex={-1}
     >
       {/* Delete Button */}
       <button
         onClick={handleDelete}
+        title="Delete node"
         className="
           absolute top-1 right-1
-          rounded-full
           w-5 h-5
           flex items-center justify-center
-          text-gray-500
-          hover:bg-red-100
-          hover:text-red-600
+          rounded-full
+          text-white/60
+          hover:text-red-400
+          hover:bg-red-500/10
           transition
           text-xs
           font-bold
+          focus:outline-none
+          focus:ring-0
         "
-        title="Delete node"
       >
         ✕
       </button>
 
-
       {/* Drag indicator */}
       <div className="w-full flex justify-center">
-        <div className="h-1 w-8 bg-gray-400 rounded" />
+        <div className="h-1 w-8 rounded bg-white/30" />
       </div>
 
       {/* Title */}
-      <div className="font-semibold text-gray-800 border-b pb-1">
+      <div className="font-semibold text-white border-b border-white/10 pb-1">
         {label}
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-2">{children}</div>
+      <div className="flex flex-col gap-2 text-white">
+        {children}
+      </div>
 
       {/* Input handles */}
       {inputs.map((input, index) => (
@@ -66,8 +83,8 @@ const BaseNode = ({
           style={{
             width: 10,
             height: 10,
-            background: '#eeeeee',
-            border: '2px solid black',
+            background: '#020617',
+            border: '1.5px solid #94a3b8',
             top: 50 + index * 24,
           }}
         />
@@ -83,8 +100,8 @@ const BaseNode = ({
           style={{
             width: 10,
             height: 10,
-            background: '#eeeeee',
-            border: '2px solid black',
+            background: '#020617',
+            border: '1.5px solid #94a3b8',
             top: 50 + index * 24,
           }}
         />

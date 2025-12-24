@@ -104,7 +104,7 @@ export const PipelineUI = () => {
         <>
         <div
           ref={reactFlowWrapper}
-          className="w-screen h-[84.5vh] bg-neutral-900"
+          className="w-screen h-[84.5vh] bg-linear-to-br from-slate-950 via-slate-900 to-slate-950"
         >
           <ReactFlow
             className="w-full h-full"
