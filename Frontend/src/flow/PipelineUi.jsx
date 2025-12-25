@@ -47,6 +47,11 @@ export const PipelineUI = () => {
   
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+
+  const isMobile =
+  typeof window !== "undefined" &&
+  window.matchMedia("(max-width: 767px)").matches;
+
   
   const miniMapSize = useMiniMapSize();
 
@@ -168,15 +173,22 @@ export const PipelineUI = () => {
             <Controls position="bottom-left"/>
 
             <MiniMap
-              position="bottom-left"
+              position={isMobile?"bottom-right":"bottom-left"}
               style={{
-                left: 50,
+                ...(isMobile
+                  ? {
+                      right: 0,
+                      bottom: 0,
+                    }
+                  : {
+                      left: 50,
+                }),
                 width: miniMapSize.width,
                 height: miniMapSize.height,
                 borderRadius: 6,
-                backgroundColor: '#111827',
-                border: '1px solid rgba(255,255,255,0.12)',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
+                backgroundColor: "#111827",
+                border: "1px solid rgba(255,255,255,0.12)",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.6)",
               }}
               maskColor="rgba(0,0,0,0.25)"
               nodeColor={(n) => {
@@ -192,9 +204,6 @@ export const PipelineUI = () => {
                 }
               }}
             />
-            <div className="absolute z-10 bottom-4 right-4">
-              <SubmitButton />
-            </div>
           </ReactFlow>
 
         </div>

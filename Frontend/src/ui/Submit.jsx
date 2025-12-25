@@ -31,10 +31,10 @@ export const SubmitButton = () => {
         <button
           onClick={handleSubmit}
           className="
-            px-10 py-3 rounded-xl font-semibold text-white
+            px-6 py-2 rounded font-semibold text-white
             bg-linear-to-r from-blue-700 via-blue-500 to-blue-700
             shadow-lg transition-all duration-200
-            hover:brightness-110 hover:shadow-xl
+            hover:brightness-120 hover:shadow-xl
             active:scale-95
             focus:outline-none focus:ring-4 focus:ring-blue-300
           "

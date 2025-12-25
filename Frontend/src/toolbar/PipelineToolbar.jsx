@@ -26,7 +26,6 @@ export const PipelineToolbar = () => {
 
   return (
     <div className="relative min-h-12 w-full z-10 bg-linear-to-r from-[#002f80] via-[#1831b2] to-[#002791] shadow-lg">
-      
       {/* Toggle Button */}
       <button
         onClick={() => setOpen((v) => !v)}
@@ -43,13 +42,40 @@ export const PipelineToolbar = () => {
           transition
         "
       >
-        {open ? <HiChevronUp className="text-2xl" /> : <HiChevronDown className="text-2xl" />}
+        {open ? (
+          <HiChevronUp className="text-2xl" />
+        ) : (
+          <HiChevronDown className="text-2xl" />
+        )}
       </button>
 
-      <div className="flex justify-between p-1 shadow-gray-900 shadow">
-          <h1 className="text-white font-bold text-xl">VectorShift</h1>
-          <SubmitButton/>
+      <div className="flex justify-between items-center p-2 shadow-gray-900 shadow">
+        <div className="flex items-center gap-3">
+
+          <div className="
+            h-10 w-10
+            rounded-full
+            bg-white/10
+            p-0.5
+            shadow-inner
+            ring-1 ring-white/20
+            flex items-center justify-center
+          ">
+            <img
+              src="/Logo.png"
+              alt="VectorShift Logo"
+              className="h-full w-full rounded-full object-contain"
+            />
+          </div>
+          
+          <span className="text-white font-bold text-xl tracking-wide">
+            VectorShift
+          </span>
+        </div>
+
+        <SubmitButton />
       </div>
+
 
       {/* Toolbar */}
       <div
@@ -69,38 +95,35 @@ export const PipelineToolbar = () => {
             py-4
           "
         >
-
-
           {/* Nodes */}
-<div
-  className="
-    grid
-    grid-flow-col
-    auto-cols-[120px]
-    gap-4
-    w-full
+          <div
+            className="
+              grid
+              grid-flow-col
+              auto-cols-[120px]
+              gap-4
+              w-full
 
-    overflow-x-auto
-    md:overflow-x-visible
+              overflow-x-auto
+              md:overflow-x-visible
 
-    md:grid-flow-row
-    md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))]
+              md:grid-flow-row
+              md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))]
 
-    scrollbar-thin
-    scrollbar-thumb-white/20
-    scrollbar-track-transparent
-  "
->
-  {nodes.map((node) => (
-    <DraggableNode
-      key={node.type}
-      type={node.type}
-      label={node.label}
-      icon={node.icon}
-    />
-  ))}
-</div>
-
+              scrollbar-thin
+              scrollbar-thumb-white/20
+              scrollbar-track-transparent
+            "
+          >
+            {nodes.map((node) => (
+              <DraggableNode
+                key={node.type}
+                type={node.type}
+                label={node.label}
+                icon={node.icon}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
