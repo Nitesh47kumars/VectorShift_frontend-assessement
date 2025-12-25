@@ -30,19 +30,19 @@ export const PipelineToolbar = () => {
       <button
         onClick={() => setOpen((v) => !v)}
         className="
-          absolute -bottom-4 left-1/2 -translate-x-1/2
-          z-20
-          rounded-full
-          bg-slate-900
-          border border-white/10
-          p-1.5
+          absolute -bottom-6 left-1/2 -translate-x-1/2
+          bg-transparent
+          border border-white/40
+          blur-[1px]
+          rounded
+          py-0.2 px-8
           text-white
           shadow-md
           hover:bg-slate-800
           transition
         "
       >
-        {open ? <HiChevronUp /> : <HiChevronDown />}
+        {open ? <HiChevronUp className="text-2xl" /> : <HiChevronDown className="text-2xl" />}
       </button>
 
       {/* Toolbar */}
@@ -59,29 +59,40 @@ export const PipelineToolbar = () => {
             md:flex-row
             md:justify-between
             md:items-center
-            gap-4
-            px-2 py-3
+            md:px-5 p-2
+            py-4
           "
         >
-          {/* Logo — desktop only */}
-          <div className="hidden md:flex items-center shrink-0 pr-4 border-r border-white/20">
-            <span className="text-white font-bold text-lg tracking-wide">
-              VectorFlow
+          {/* Logo desktop only */}
+          <div className="hidden md:flex items-center gap-3 shrink-0 pr-4">
+            <img
+              src="/Logo.png"
+              alt="Logo"
+              className="h-10 w-10 rounded-full object-cover ring-2 ring-white/20"
+            />
+
+            <span className="text-white uppercase font-bold text-[22px] tracking-wide select-none">
+              VectorShift
             </span>
           </div>
 
-          {/* Nodes (mobile = same, desktop = right side) */}
+
+          {/* Nodes (mobile = normal, desktop = right side) */}
           <div
             className="
               flex
               items-center
               gap-4
+
               overflow-x-auto
+              md:overflow-x-visible
+
               scrollbar-thin
               scrollbar-thumb-white/20
               scrollbar-track-transparent
             "
           >
+
             {nodes.map((node) => (
               <DraggableNode
                 key={node.type}

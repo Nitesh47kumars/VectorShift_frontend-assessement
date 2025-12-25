@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
 import { useStore } from '../store/Store.jsx';
 import { shallow } from 'zustand/shallow';
@@ -96,6 +96,32 @@ export const PipelineUI = () => {
     },
     [reactFlowInstance]
   );
+
+
+  useEffect(() => {
+    const handler = (e) => {
+      const type = e.detail.type;
+      if (!reactFlowInstance) return;
+  
+      const position = reactFlowInstance.project({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2,
+      });
+  
+      const nodeID = getNodeID(type);
+  
+      addNode({
+        id: nodeID,
+        type,
+        position,
+        data: { id: nodeID, nodeType: type },
+      });
+    };
+  
+    window.addEventListener("add-node", handler);
+    return () => window.removeEventListener("add-node", handler);
+  }, [reactFlowInstance]);
+  
   
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -128,8 +154,14 @@ export const PipelineUI = () => {
             nodeTypes={nodeTypes}
             proOptions={proOptions}
             snapGrid={[gridSize, gridSize]}
+
+            panOnDrag={true}
+            panOnScroll={true}
+            zoomOnScroll={true}
+            zoomOnPinch={true}
+            zoomOnDoubleClick={false}
             >
-            <PipelineToolbar/>
+            <PipelineToolbar className="pointer-events-auto"/>
             
             <Background color="#999" gap={gridSize} />
 

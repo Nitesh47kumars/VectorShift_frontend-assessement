@@ -1,42 +1,61 @@
+import { useMemo, useRef } from "react";
+
 export const DraggableNode = ({ type, label, icon }) => {
-  const onDragStart = (event, nodeType) => {
-    const appData = { nodeType };
-    event.target.style.cursor = "grabbing";
+  const isMobile = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 767px)").matches,
+    []
+  );
+
+  const draggedRef = useRef(false);
+
+  const handleClick = () => {
+    if (!isMobile || draggedRef.current) return;
+
+    window.dispatchEvent(
+      new CustomEvent("add-node", { detail: { type } })
+    );
+  };
+
+  const onDragStart = (event) => {
+    if (isMobile) return;
+
+    draggedRef.current = true;
+
     event.dataTransfer.setData(
       "application/reactflow",
-      JSON.stringify(appData)
+      JSON.stringify({ nodeType: type })
     );
     event.dataTransfer.effectAllowed = "move";
   };
 
+  const onDragEnd = () => {
+    draggedRef.current = false;
+  };
+
   return (
     <div
-      className={`
-        ${type}
-        cursor-grab
+      draggable={!isMobile}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      onClick={handleClick}
+      className="
+        cursor-pointer
         shrink-0
-        w-28 sm:w-24
-        h-18 sm:h-18
-        flex flex-col
-        items-center justify-center
-        gap-1
+        w-28 h-18
+        flex flex-col items-center justify-center
         rounded-xl
         bg-linear-to-r from-slate-800 to-slate-900
         text-white
         shadow-lg
-        transition-all
-        hover:shadow-xl
+        transition
         active:scale-95
-      `}
-      draggable
-      onDragStart={(event) => onDragStart(event, type)}
-      onDragEnd={(event) => (event.target.style.cursor = "grab")}
+        select-none
+      "
     >
-      <div className="text-xl sm:text-2xl">
-        {icon}
-      </div>
-
-      <span className="font-semibold text-xs sm:text-sm text-center">
+      <div className="text-xl">{icon}</div>
+      <span className="text-xs font-semibold text-center">
         {label}
       </span>
     </div>
