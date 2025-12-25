@@ -11,7 +11,6 @@ import {LoggerNode} from '../nodes/LoggerNode.jsx';
 import {ConditionNode} from '../nodes/ConditionNode.jsx';
 
 import 'reactflow/dist/style.css';
-import { SubmitButton } from '../ui/Submit.jsx';
 
 
 import DeletableEdge from './DeletableEdge.jsx';

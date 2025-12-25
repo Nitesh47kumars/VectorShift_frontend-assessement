@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DraggableNode } from "./draggableNode.jsx";
+import { DraggableNode } from "./DraggableNode.jsx";
 
 import { GiLogicGateNor } from "react-icons/gi";
 import { MdInput } from "react-icons/md";
@@ -9,7 +9,7 @@ import { FaRobot } from "react-icons/fa";
 import { IoIosPrint } from "react-icons/io";
 import { LuFileOutput } from "react-icons/lu";
 import { HiChevronUp, HiChevronDown } from "react-icons/hi";
-import { SubmitButton } from "../ui/Submit.jsx";
+import { SubmitButton } from "../ui/SubmitButton.jsx";
 
 export const PipelineToolbar = () => {
   const [open, setOpen] = useState(true);
