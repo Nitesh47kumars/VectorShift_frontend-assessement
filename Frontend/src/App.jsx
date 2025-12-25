@@ -1,11 +1,7 @@
-import { PipelineUI } from './flow/PipelineUi.jsx';
+import { PipelineUI } from "./flow/PipelineUi.jsx";
 
 function App() {
-  return (
-    <div>
-      <PipelineUI />
-    </div>
-  );
+  return <PipelineUI/>
 }
 
 export default App;

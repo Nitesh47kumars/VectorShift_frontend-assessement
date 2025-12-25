@@ -19,13 +19,13 @@ export const PipelineToolbar = () => {
     { type: "customOutput", label: "Output", icon: <LuFileOutput /> },
     { type: "llm", label: "LLM", icon: <FaRobot /> },
     { type: "text", label: "Text", icon: <CiTextAlignCenter /> },
-    { type: "newnode", label: "New", icon: <TfiWrite /> },
+    { type: "custom", label: "Custom", icon: <TfiWrite /> },
     { type: "condition", label: "Condition", icon: <GiLogicGateNor /> },
     { type: "logger", label: "Logger", icon: <IoIosPrint /> },
   ];
 
   return (
-    <div className="relative min-h-12 w-full z-10 bg-linear-to-r from-[#002f80] via-[#1831b2] to-[#002791] shadow-lg">
+    <div className="fixed top-0 left-0 min-h-12 w-full z-10 bg-linear-to-r from-[#002f80] via-[#1831b2] to-[#002791] shadow-lg">
       {/* Toggle Button */}
       <button
         onClick={() => setOpen((v) => !v)}

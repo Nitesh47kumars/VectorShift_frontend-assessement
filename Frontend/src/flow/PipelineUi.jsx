@@ -6,7 +6,7 @@ import { InputNode } from '../nodes/InputNode.jsx';
 import { LLMNode } from '../nodes/LLMNode.jsx';
 import { OutputNode } from '../nodes/OutputNode.jsx';
 import { TextNode } from '../nodes/TextNode.jsx';
-import NewNode from '../nodes/NewNode.jsx';
+import CustomNode from '../nodes/CustomNode.jsx';
 import {LoggerNode} from '../nodes/LoggerNode.jsx';
 import {ConditionNode} from '../nodes/ConditionNode.jsx';
 
@@ -27,7 +27,7 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
-  newnode:NewNode,
+  custom: CustomNode,
   logger: LoggerNode,
   condition: ConditionNode,
 };
@@ -88,14 +88,14 @@ export const PipelineUI = () => {
         });
         
         const nodeID = getNodeID(type);
-        const newNode = {
+        const CustomNode = {
           id: nodeID,
           type,
           position,
           data: getInitNodeData(nodeID, type),
         };
         
-        addNode(newNode);
+        addNode(CustomNode);
       }
     },
     [reactFlowInstance]
@@ -142,7 +142,7 @@ export const PipelineUI = () => {
     <>
         <div
           ref={reactFlowWrapper}
-          className="w-screen h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950"
+          className="w-screen h-screen overflow-hidden bg-linear-to-br from-slate-950 via-slate-900 to-slate-950"
           >
           <ReactFlow
             className="w-full h-full"
