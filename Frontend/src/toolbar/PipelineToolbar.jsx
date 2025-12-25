@@ -24,7 +24,7 @@ export const PipelineToolbar = () => {
   ];
 
   return (
-    <div className="relative w-full z-10 bg-linear-to-r from-indigo-700 via-indigo-500 to-indigo-700 shadow-lg">
+    <div className="relative w-full z-10 bg-linear-to-r from-[#002f80] via-[#1831b2] to-[#002791] shadow-lg">
       
       {/* Toggle Button */}
       <button

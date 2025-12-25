@@ -46,8 +46,8 @@ export const InputNode = ({ id, data }) => {
               data.inputType = e.target.value;
             }}
           >
-            <option value="Text">Text</option>
-            <option value="File">File</option>
+            <option className='bg-[#001f63]' value="Text">Text</option>
+            <option className='bg-[#001f63]' value="File">File</option>
           </select>
         </label>
 
