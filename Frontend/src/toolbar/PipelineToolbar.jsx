@@ -9,6 +9,7 @@ import { FaRobot } from "react-icons/fa";
 import { IoIosPrint } from "react-icons/io";
 import { LuFileOutput } from "react-icons/lu";
 import { HiChevronUp, HiChevronDown } from "react-icons/hi";
+import { SubmitButton } from "../ui/Submit.jsx";
 
 export const PipelineToolbar = () => {
   const [open, setOpen] = useState(true);
@@ -24,7 +25,7 @@ export const PipelineToolbar = () => {
   ];
 
   return (
-    <div className="relative w-full z-10 bg-linear-to-r from-[#002f80] via-[#1831b2] to-[#002791] shadow-lg">
+    <div className="relative min-h-12 w-full z-10 bg-linear-to-r from-[#002f80] via-[#1831b2] to-[#002791] shadow-lg">
       
       {/* Toggle Button */}
       <button
@@ -45,6 +46,11 @@ export const PipelineToolbar = () => {
         {open ? <HiChevronUp className="text-2xl" /> : <HiChevronDown className="text-2xl" />}
       </button>
 
+      <div className="flex justify-between p-1 shadow-gray-900 shadow">
+          <h1 className="text-white font-bold text-xl">VectorShift</h1>
+          <SubmitButton/>
+      </div>
+
       {/* Toolbar */}
       <div
         className={`
@@ -63,45 +69,38 @@ export const PipelineToolbar = () => {
             py-4
           "
         >
-          {/* Logo desktop only */}
-          <div className="hidden md:flex items-center gap-3 shrink-0 pr-4">
-            <img
-              src="/Logo.png"
-              alt="Logo"
-              className="h-10 w-10 rounded-full object-cover ring-2 ring-white/20"
-            />
-
-            <span className="text-white uppercase font-bold text-[22px] tracking-wide select-none">
-              VectorShift
-            </span>
-          </div>
 
 
-          {/* Nodes (mobile = normal, desktop = right side) */}
-          <div
-            className="
-              flex
-              items-center
-              gap-4
+          {/* Nodes */}
+<div
+  className="
+    grid
+    grid-flow-col
+    auto-cols-[120px]
+    gap-4
+    w-full
 
-              overflow-x-auto
-              md:overflow-x-visible
+    overflow-x-auto
+    md:overflow-x-visible
 
-              scrollbar-thin
-              scrollbar-thumb-white/20
-              scrollbar-track-transparent
-            "
-          >
+    md:grid-flow-row
+    md:grid-cols-[repeat(auto-fit,minmax(120px,1fr))]
 
-            {nodes.map((node) => (
-              <DraggableNode
-                key={node.type}
-                type={node.type}
-                label={node.label}
-                icon={node.icon}
-              />
-            ))}
-          </div>
+    scrollbar-thin
+    scrollbar-thumb-white/20
+    scrollbar-track-transparent
+  "
+>
+  {nodes.map((node) => (
+    <DraggableNode
+      key={node.type}
+      type={node.type}
+      label={node.label}
+      icon={node.icon}
+    />
+  ))}
+</div>
+
         </div>
       </div>
     </div>

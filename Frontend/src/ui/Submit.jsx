@@ -27,7 +27,7 @@ export const SubmitButton = () => {
   return (
     <>
       {/* Submit Button */}
-      <div className="flex justify-center mt-4">
+      <div className="">
         <button
           onClick={handleSubmit}
           className="

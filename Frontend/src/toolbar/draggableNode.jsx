@@ -43,7 +43,7 @@ export const DraggableNode = ({ type, label, icon }) => {
       className="
         cursor-pointer
         shrink-0
-        w-28 h-18
+        w-full h-18
         flex flex-col items-center justify-center
         rounded-xl
         bg-linear-to-r from-slate-800 to-slate-900
