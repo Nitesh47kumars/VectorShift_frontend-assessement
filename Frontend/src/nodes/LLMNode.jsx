@@ -23,7 +23,7 @@ export const LLMNode = ({ id, data }) => {
         <label className="flex flex-col text-[10px] uppercase tracking-wider text-white/50 font-semibold">
           Model
           <select 
-            className="nodrag mt-1 px-2 py-1.5 border border-white/10 rounded bg-[#001f63] text-white text-xs outline-none cursor-pointer focus:border-blue-500" 
+            className="nodrag mt-1 px-2 py-1.5 border border-white/10 rounded text-white text-xs outline-none cursor-pointer focus:border-blue-500" 
             value={model} 
             onChange={(e) => setModel(e.target.value)}
           >
@@ -32,26 +32,6 @@ export const LLMNode = ({ id, data }) => {
             <option className='bg-[#001f63]' value="claude-3-sonnet">Claude 3 Sonnet</option>
           </select>
         </label>
-
-        <label className="flex flex-col text-[10px] uppercase tracking-wider text-white/50 font-semibold">
-          <div className="flex justify-between">
-            <span>Temperature</span>
-            <span className="text-blue-400">{temp}</span>
-          </div>
-          <input 
-            type="range" 
-            min="0" 
-            max="1" 
-            step="0.1"
-            className="nodrag mt-2 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
-            value={temp} 
-            onChange={(e) => setTemp(parseFloat(e.target.value))} 
-          />
-        </label>
-
-        <div className="pt-2 border-t border-white/5 text-[9px] text-white/30 italic">
-          Handles system instructions and user prompts.
-        </div>
       </div>
     </BaseNode>
   );

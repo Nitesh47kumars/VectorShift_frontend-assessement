@@ -29,7 +29,7 @@ export const ConditionNode = ({ id, data }) => {
         <label className="flex flex-col text-[10px] uppercase tracking-wider text-white/50 font-semibold">
           Operator
           <select
-            className="nodrag mt-1 px-2 py-1.5 border border-white/10 rounded bg-[#1a1a1a] text-white text-xs outline-none cursor-pointer focus:border-blue-500"
+            className="nodrag mt-1 px-2 py-1.5 border border-white/10 rounded text-white text-xs outline-none cursor-pointer focus:border-blue-500"
             value={conditionType}
             onChange={(e) => setConditionType(e.target.value)}
           >

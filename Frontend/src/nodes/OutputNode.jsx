@@ -21,12 +21,12 @@ export const OutputNode = ({ id, data }) => {
         <label className="flex flex-col text-[10px] uppercase tracking-wider text-white/50 font-semibold">
           Output Format
           <select 
-            className="nodrag mt-1 px-2 py-1.5 border border-white/10 rounded bg-[#1a1a1a] text-white text-xs outline-none cursor-pointer focus:border-blue-500" 
+            className="nodrag mt-1 px-2 py-1.5 border border-white/10 rounded text-white text-xs outline-none cursor-pointer focus:border-blue-500" 
             value={outputType} 
             onChange={(e) => setOutputType(e.target.value)}
           >
-            <option value="Text">Text Response</option>
-            <option value="Image">Image Result</option>
+            <option className='bg-[#001f63]' value="Text">Text Response</option>
+            <option className='bg-[#001f63]' value="Image">Image Result</option>
           </select>
         </label>
 
