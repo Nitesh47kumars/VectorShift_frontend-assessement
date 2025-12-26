@@ -3,6 +3,7 @@ import { Handle, Position, useReactFlow } from "reactflow";
 const BaseNode = ({
   id,
   label,
+  onNameChange,
   inputs = [],
   outputs = [],
   width = 200,
@@ -70,8 +71,18 @@ const BaseNode = ({
       </div>
 
       {/* BODY / CHILDREN */}
-      <div className="flex flex-col gap-2 text-white p-3 bg-linear-to-r from-[#002355be] to-[#050e3cc1]">
+      <div className="flex flex-col gap-1 text-white p-3 bg-linear-to-r from-[#002355be] to-[#050e3cc1]">
+        <label className="flex flex-col text-[10px] uppercase tracking-wider text-white/50 font-semibold">
+          Name / Title
+          <input
+            className="nodrag mt-1 px-2 py-1.5 border border-white/10 rounded bg-white/5 text-white text-xs outline-none focus:border-blue-500 transition-colors"
+            value={label}
+            onChange={(e) => onNameChange(e.target.value)}
+          />
+        </label>
+
         {children}
+
       </div>
 
       {/* Input handles */}

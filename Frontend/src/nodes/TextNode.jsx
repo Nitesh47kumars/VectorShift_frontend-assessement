@@ -5,12 +5,12 @@ import BaseNode from './BaseNode.jsx';
 const VARIABLE_REGEX = /\{\{\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*\}\}/g;
 
 export const TextNode = ({ id, data }) => {
-  const [title, setTitle] = useState(data?.label || 'Text');
+  const [currName, setCurrName] = useState(data?.label || 'Text');
   const [text, setText] = useState(data?.text || '{{value}}');
   const textareaRef = useRef(null);
   const updateNodeInternals = useUpdateNodeInternals();
 
-  data.label = title;
+  data.label = currName;
   data.text = text;
 
   useEffect(() => {
@@ -34,14 +34,15 @@ export const TextNode = ({ id, data }) => {
   }, [text, id]);
 
   return (
-    <BaseNode id={id} label={title} inputs={inputHandles} outputs={[{ id: `${id}-value` }]}>
+    <BaseNode
+      id={id}
+      label={currName}
+      onNameChange={setCurrName}
+      inputs={inputHandles}
+      outputs={[{ id: `${id}-value` }]}
+     >
       <div className="flex flex-col gap-2">
-        <input 
-          className="nodrag bg-white/5 border border-white/10 rounded px-2 py-1 text-[10px] text-white/50 outline-none focus:border-blue-500"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Node Title"
-        />
+        
         <textarea
           ref={textareaRef}
           value={text}
